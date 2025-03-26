@@ -59,7 +59,7 @@ def vector_embedding():
         #                 content = f.read()
         #                 java_documents.append(Document(page_content=content, metadata={"source": file_path}))
 
-        java_files_directory = "./java_files"  # Update to point to the 'src' folder
+        java_files_directory = "./"  # Update to point to the 'src' folder
         java_documents = []
 
         # Read all Java files from the 'src' directory and its subdirectories
