@@ -1,0 +1,18 @@
+[
+    {
+        "query": "BDD feature file for /credit API",
+        "expected_response": "Feature: Credit an account\n  As a user\n  I want to add money to my account\n  So that I can increase my account balance\n\n  Scenario: Successfully credit an account\n    Given an account with ID 1 exists\n    When I credit the account with 100.00\n    Then the account balance should increase by 100.00\n\n  Scenario: Credit a non-existing account\n    Given an account with ID 999 does not exist\n    When I attempt to credit the account with 50.00\n    Then the transaction should fail with an error message \"Account not found\"\n\n  Scenario: Credit an account with zero amount\n    Given an account with ID 2 exists\n    When I attempt to credit the account with 0.00\n    Then the transaction should fail with an error message \"Invalid credit amount\""
+    },    
+    {
+        "query": "BDD feature file for /debit API",
+        "expected_response": "Feature: Debit an account\n  As a user\n  I want to withdraw money from my account\n  So that I can manage my account funds effectively\n\n  Scenario: Successfully debit an account\n    Given an account with ID 1 has a balance of 200.00\n    When I debit the account with 50.00\n    Then the account balance should decrease by 50.00\n\n  Scenario: Debit an account with insufficient funds\n    Given an account with ID 2 has a balance of 30.00\n    When I attempt to debit the account with 50.00\n    Then the transaction should fail with an error message \"Insufficient funds\"\n\n  Scenario: Debit a non-existing account\n    Given an account with ID 999 does not exist\n    When I attempt to debit the account with 50.00\n    Then the transaction should fail with an error message \"Account not found\""
+    },
+    {
+        "query": "BDD feature file for /balance API",
+        "expected_response": "Feature: Check account balance\n  As a user\n  I want to check my account balance\n  So that I can keep track of my funds\n\n  Scenario: Successfully retrieve account balance\n    Given an account with ID 1 has a balance of 500.00\n    When I request the balance for account 1\n    Then I should receive a balance of 500.00\n\n  Scenario: Retrieve balance for an account with zero balance\n    Given an account with ID 2 has a balance of 0.00\n    When I request the balance for account 2\n    Then I should receive a balance of 0.00\n\n  Scenario: Retrieve balance for a non-existing account\n    Given an account with ID 999 does not exist\n    When I request the balance for account 999\n    Then the transaction should fail with an error message \"Account not found\""
+    }    
+        
+]
+
+
+
